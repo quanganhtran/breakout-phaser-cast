@@ -1,4 +1,4 @@
-let keyA, keyD, spacebar, strafeLeft, strafeRight;
+let strafeLeft, strafeRight;
 
 let connectionIdx = 0;
 
@@ -41,9 +41,6 @@ const Breakout = new Phaser.Class({
         this.physics.add.collider(this.ball, this.paddle, this.hitPaddle, null, this);
 
         //  Input events
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         strafeLeft = strafe(this, true);
         strafeRight = strafe(this, false);
 
@@ -118,24 +115,6 @@ const Breakout = new Phaser.Class({
             ball.setVelocityX(2 + Math.random() * 8);
         }
     },
-
-    update: function () {
-
-        if (Phaser.Input.Keyboard.JustDown(spacebar))
-        {
-            launch(this);
-        }
-
-        if (keyA.isDown) {
-            strafeLeft();
-        } else if (keyD.isDown) {
-            strafeRight();
-        }
-
-        if (this.ball.y > 600) {
-            this.resetBall();
-        }
-    }
 
 });
 
